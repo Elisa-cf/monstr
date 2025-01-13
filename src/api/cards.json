@@ -1,0 +1,536 @@
+[
+  {
+    "id": "2x1",
+    "name": "2x1",
+    "icon": "icon01.png",
+    "category": "misc"
+  },
+  {
+    "id": "8bits",
+    "name": "8bits",
+    "icon": "icon02.png",
+    "category": "devices"
+  },
+  {
+    "id": "adult-to-children",
+    "name": "Adult to children",
+    "icon": "icon03.png",
+    "category": "human"
+  },
+  {
+    "id": "alien",
+    "name": "Alien",
+    "icon": "icon01.png",
+    "category": "robotic"
+  },
+  {
+    "id": "android",
+    "name": "Android",
+    "icon": "icon02.png",
+    "category": "robotic"
+  },
+  {
+    "id": "aphonic",
+    "name": "Aphonic",
+    "icon": "icon03.png",
+    "category": "human"
+  },
+  {
+    "id": "baby",
+    "name": "Baby",
+    "icon": "icon01.png",
+    "category": "human"
+  },
+  {
+    "id": "birthday-beach",
+    "name": "Birthday beach",
+    "icon": "icon02.png",
+    "category": "sing"
+  },
+  {
+    "id": "birthday-capella",
+    "name": "Birthday capella",
+    "icon": "icon03.png",
+    "category": "sing"
+  },
+  {
+    "id": "birthday-reggae",
+    "name": "Birthday reggae",
+    "icon": "icon01.png",
+    "category": "sing"
+  },
+  {
+    "id": "birthday-rock",
+    "name": "Birthday rock",
+    "icon": "icon02.png",
+    "category": "sing"
+  },
+  {
+    "id": "blocks",
+    "name": "Blocks",
+    "icon": "icon03.png",
+    "category": "sing"
+  },
+  {
+    "id": "bot",
+    "name": "Bot",
+    "icon": "icon01.png",
+    "category": "robotic"
+  },
+  {
+    "id": "cathedral",
+    "name": "Cathedral",
+    "icon": "icon02.png",
+    "category": "environment"
+  },
+  {
+    "id": "cave",
+    "name": "Cave",
+    "icon": "icon03.png",
+    "category": "environment"
+  },
+  {
+    "id": "central",
+    "name": "Central",
+    "icon": "icon01.png",
+    "category": "devices"
+  },
+  {
+    "id": "children-to-adult",
+    "name": "Children to adult",
+    "icon": "icon02.png",
+    "category": "human"
+  },
+  {
+    "id": "chipmunk",
+    "name": "Chipmunk",
+    "icon": "icon03.png",
+    "category": "misc"
+  },
+  {
+    "id": "cooltune",
+    "name": "Cooltune",
+    "icon": "icon01.png",
+    "category": "sing"
+  },
+  {
+    "id": "cop-chase",
+    "name": "Cop chase",
+    "icon": "icon02.png",
+    "category": "devices"
+  },
+  {
+    "id": "cop-radio",
+    "name": "Cop radio",
+    "icon": "icon03.png",
+    "category": "devices"
+  },
+  {
+    "id": "cop-walkie-talkie",
+    "name": "Cop walkie talkie",
+    "icon": "icon01.png",
+    "category": "devices"
+  },
+  {
+    "id": "crazy",
+    "name": "Crazy",
+    "icon": "icon02.png",
+    "category": "misc"
+  },
+  {
+    "id": "cs-ct",
+    "name": "Cs ct",
+    "icon": "icon03.png",
+    "category": "devices"
+  },
+  {
+    "id": "cs-t",
+    "name": "Cs t",
+    "icon": "icon01.png",
+    "category": "devices"
+  },
+  {
+    "id": "custom",
+    "name": "Custom",
+    "icon": "icon02.png",
+    "category": "misc"
+  },
+  {
+    "id": "custom-pitch",
+    "name": "Custom pitch",
+    "icon": "icon03.png",
+    "category": "misc"
+  },
+  {
+    "id": "cybertune",
+    "name": "Cybertune",
+    "icon": "icon01.png",
+    "category": "misc"
+  },
+  {
+    "id": "dark",
+    "name": "Dark",
+    "icon": "icon02.png",
+    "category": "character"
+  },
+  {
+    "id": "dark-angel",
+    "name": "Dark angel",
+    "icon": "icon03.png",
+    "category": "horror"
+  },
+  {
+    "id": "deep",
+    "name": "Deep",
+    "icon": "icon01.png",
+    "category": "human"
+  },
+  {
+    "id": "double",
+    "name": "Double",
+    "icon": "icon02.png",
+    "category": "horror"
+  },
+  {
+    "id": "dron",
+    "name": "Dron",
+    "icon": "icon03.png",
+    "category": "robotic"
+  },
+  {
+    "id": "echo",
+    "name": "Echo",
+    "icon": "icon01.png",
+    "category": "environment"
+  },
+  {
+    "id": "engine",
+    "name": "Engine",
+    "icon": "icon02.png",
+    "category": "devices"
+  },
+  {
+    "id": "evil",
+    "name": "Evil",
+    "icon": "icon03.png",
+    "category": "horror"
+  },
+  {
+    "id": "exo",
+    "name": "Exo",
+    "icon": "icon01.png",
+    "category": "horror"
+  },
+  {
+    "id": "fan",
+    "name": "Fan",
+    "icon": "icon02.png",
+    "category": "devices"
+  },
+  {
+    "id": "fear",
+    "name": "Fear",
+    "icon": "icon03.png",
+    "category": "horror"
+  },
+  {
+    "id": "franky",
+    "name": "Franky",
+    "icon": "icon01.png",
+    "category": "character"
+  },
+  {
+    "id": "game-over",
+    "name": "Game over",
+    "icon": "icon02.png",
+    "category": "character"
+  },
+  {
+    "id": "ghost",
+    "name": "Ghost",
+    "icon": "icon03.png",
+    "category": "horror"
+  },
+  {
+    "id": "hamsters",
+    "name": "Hamsters",
+    "icon": "icon02.png",
+    "category": "misc"
+  },
+  {
+    "id": "harmony",
+    "name": "Harmony",
+    "icon": "icon03.png",
+    "category": "sing"
+  },
+  {
+    "id": "helio",
+    "name": "Helio",
+    "icon": "icon01.png",
+    "category": "misc"
+  },
+  {
+    "id": "hurry-up",
+    "name": "Hurry up",
+    "icon": "icon02.png",
+    "category": "misc"
+  },
+  {
+    "id": "kong",
+    "name": "Kong",
+    "icon": "icon03.png",
+    "category": "character"
+  },
+  {
+    "id": "magic-chords",
+    "name": "Magic chords",
+    "icon": "icon01.png",
+    "category": "sing"
+  },
+  {
+    "id": "man-to-woman",
+    "name": "Man to woman",
+    "icon": "icon02.png",
+    "category": "human"
+  },
+  {
+    "id": "man-to-woman-2",
+    "name": "Man to woman 2",
+    "icon": "icon03.png",
+    "category": "human"
+  },
+  {
+    "id": "nofx",
+    "name": "Clean",
+    "icon": "icon01.png",
+    "category": "human"
+  },
+  {
+    "id": "octaver",
+    "name": "Octaver",
+    "icon": "icon02.png",
+    "category": "sing"
+  },
+  {
+    "id": "ogre",
+    "name": "Ogre",
+    "icon": "icon03.png",
+    "category": "horror"
+  },
+  {
+    "id": "orbital",
+    "name": "Orbital",
+    "icon": "icon01.png",
+    "category": "misc"
+  },
+  {
+    "id": "out-of-range",
+    "name": "Out of range",
+    "icon": "icon02.png",
+    "category": "devices"
+  },
+  {
+    "id": "party-time",
+    "name": "Party time",
+    "icon": "icon03.png",
+    "category": "sing"
+  },
+  {
+    "id": "poison",
+    "name": "Poison",
+    "icon": "icon01.png",
+    "category": "character"
+  },
+  {
+    "id": "police-bot",
+    "name": "Police bot",
+    "icon": "icon02.png",
+    "category": "misc"
+  },
+  {
+    "id": "possessed",
+    "name": "Possessed",
+    "icon": "icon03.png",
+    "category": "horror"
+  },
+  {
+    "id": "punk",
+    "name": "Punk",
+    "icon": "icon01.png",
+    "category": "sing"
+  },
+  {
+    "id": "robot",
+    "name": "Robot",
+    "icon": "icon02.png",
+    "category": "robotic"
+  },
+  {
+    "id": "romantic-paris",
+    "name": "Romantic paris",
+    "icon": "icon03.png",
+    "category": "misc"
+  },
+  {
+    "id": "romantic-ulala",
+    "name": "Romantic ulala",
+    "icon": "icon01.png",
+    "category": "misc"
+  },
+  {
+    "id": "ruby",
+    "name": "Ruby",
+    "icon": "icon02.png",
+    "category": "character"
+  },
+  {
+    "id": "santa",
+    "name": "Santa",
+    "icon": "icon03.png",
+    "category": "character"
+  },
+  {
+    "id": "second-life",
+    "name": "Second life",
+    "icon": "icon01.png",
+    "category": "misc"
+  },
+  {
+    "id": "sleepyhead",
+    "name": "Sleepyhead",
+    "icon": "icon02.png",
+    "category": "misc"
+  },
+  {
+    "id": "spacemen",
+    "name": "Spacemen",
+    "icon": "icon03.png",
+    "category": "environment"
+  },
+  {
+    "id": "speech-jammer",
+    "name": "Speech jammer",
+    "icon": "icon01.png",
+    "category": "misc"
+  },
+  {
+    "id": "speechifier",
+    "name": "Speechifier",
+    "icon": "icon02.png",
+    "category": "devices"
+  },
+  {
+    "id": "speechifier-ovation",
+    "name": "Speechifier ovation",
+    "icon": "icon03.png",
+    "category": "devices"
+  },
+  {
+    "id": "speechifier-protest",
+    "name": "Speechifier protest",
+    "icon": "icon01.png",
+    "category": "devices"
+  },
+  {
+    "id": "spirit",
+    "name": "Spirit",
+    "icon": "icon02.png",
+    "category": "horror"
+  },
+  {
+    "id": "storyteller-action",
+    "name": "Storyteller action",
+    "icon": "icon03.png",
+    "category": "sing"
+  },
+  {
+    "id": "storyteller-drama",
+    "name": "Storyteller drama",
+    "icon": "icon01.png",
+    "category": "sing"
+  },
+  {
+    "id": "storyteller-happy",
+    "name": "Storyteller happy",
+    "icon": "icon02.png",
+    "category": "sing"
+  },
+  {
+    "id": "stranger",
+    "name": "Stranger",
+    "icon": "icon03.png",
+    "category": "robotic"
+  },
+  {
+    "id": "student-hall",
+    "name": "Student hall",
+    "icon": "icon01.png",
+    "category": "environment"
+  },
+  {
+    "id": "student-playtime",
+    "name": "Student playtime",
+    "icon": "icon02.png",
+    "category": "environment"
+  },
+  {
+    "id": "sword",
+    "name": "Sword",
+    "icon": "icon03.png",
+    "category": "character"
+  },
+  {
+    "id": "telephone",
+    "name": "Telephone",
+    "icon": "icon01.png",
+    "category": "devices"
+  },
+  {
+    "id": "titan",
+    "name": "Titan",
+    "icon": "icon02.png",
+    "category": "character"
+  },
+  {
+    "id": "underwater",
+    "name": "Underwater",
+    "icon": "icon03.png",
+    "category": "environment"
+  },
+  {
+    "id": "vibrato",
+    "name": "Vibrato",
+    "icon": "icon01.png",
+    "category": "misc"
+  },
+  {
+    "id": "voicetune",
+    "name": "Voicetune",
+    "icon": "icon02.png",
+    "category": "sing"
+  },
+  {
+    "id": "vr",
+    "name": "Vr",
+    "icon": "icon03.png",
+    "category": "misc"
+  },
+  {
+    "id": "wah-wah",
+    "name": "Wah wah",
+    "icon": "icon01.png",
+    "category": "devices"
+  },
+  {
+    "id": "woman-to-man",
+    "name": "Woman to man",
+    "icon": "icon02.png",
+    "category": "human"
+  },
+  {
+    "id": "zombie",
+    "name": "Zombie",
+    "icon": "icon03.png",
+    "category": "horror"
+  }
+]

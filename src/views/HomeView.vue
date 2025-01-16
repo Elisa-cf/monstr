@@ -1,8 +1,14 @@
 <template>
   <main class="app">
-    <AllFilters @updateFilters="updateFilters" />
+    <h2>Monstr(like Tinder, but monstrous!)</h2>
+    <AllFilters @updateFilters="updateFilters" @pickRandomCard="openRandomCardModal" />
     <FavoriteList :cards="cards" />
     <CardList :cards="filteredCards" />
+    <RandomCardModal
+      v-if="isRandomCardModalOpen"
+      :card="randomCard"
+      @close="isRandomCardModalOpen = false"
+    />
   </main>
 </template>
 
@@ -13,10 +19,14 @@ import AllFilters from '../views/AllFilters.vue'
 import { loadCards, loadCategories, cards } from '@/utils/fetchCardsData'
 import type { FilterParams } from '@/types/interfaces'
 import FavoriteList from './FavoriteList.vue'
+import RandomCardModal from '../components/RandomCardModal.vue'
+import type { Card } from '@/types/interfaces'
 
 const searchQuery = ref('')
 const selectedCategory = ref('')
 const selectedSortBy = ref('')
+const isRandomCardModalOpen = ref(false)
+const randomCard = ref<Card | null>(null)
 
 const updateFilters = ({
   searchQuery: query,
@@ -45,6 +55,12 @@ const filteredCards = computed(() => {
 
   return filtered
 })
+
+const openRandomCardModal = () => {
+  const randomIndex = Math.floor(Math.random() * cards.value.length)
+  randomCard.value = cards.value[randomIndex]
+  isRandomCardModalOpen.value = true
+}
 
 onMounted(() => {
   loadCards()

@@ -4,7 +4,7 @@
 
     <i class="pi pi-list filter-icon"></i>
     <select id="category-select" v-model="selectedCategory" @change="onCategoryChange">
-      <option value="">All Categories</option>
+      <option value="">All The Monsterverse</option>
       <option v-for="category in categories" :key="category.id" :value="category.id">
         {{ category.title }}
       </option>

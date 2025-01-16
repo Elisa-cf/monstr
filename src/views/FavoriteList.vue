@@ -1,7 +1,7 @@
 <template>
-  <h1 class="title">Your favorites</h1>
+  <h1 class="title">darkest crushes</h1>
   <ul class="card-list">
-    I'm the fucking list of favorites
+    List of favorites
     <!-- <CardListItem v-for="card in cards" :key="card.id" :card="card" /> -->
   </ul>
 </template>
@@ -16,7 +16,7 @@ defineProps<{ cards: Card[] }>()
 
 <style scoped>
 .title {
-  text-transform: capitalize;
+  text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #394e64;
   font-family: ui-sans-serif;

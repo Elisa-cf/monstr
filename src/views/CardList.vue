@@ -1,5 +1,5 @@
 <template>
-  <h1 class="title">MONSTERS LIST</h1>
+  <h1 class="title">top terrors</h1>
   <ul class="card-list">
     <CardListItem v-for="card in cards" :key="card.id" :card="card" />
   </ul>
@@ -15,7 +15,7 @@ defineProps<{ cards: Card[] }>()
 
 <style scoped>
 .title {
-  text-transform: capitalize;
+  text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #394e64;
   font-family: ui-sans-serif;

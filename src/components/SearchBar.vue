@@ -1,12 +1,12 @@
 <template>
   <div class="filter-container">
-    <label for="search-input" class="filter-label">Search Monsters</label>
+    <label for="search-input" class="filter-label">Search your</label>
     <i class="pi pi-search filter-icon"></i>
     <input
       id="search-input"
       type="text"
       v-model="searchQuery"
-      placeholder="Find your monster..."
+      placeholder="Find your boo-tiful match..."
       @input="onSearch"
     />
   </div>

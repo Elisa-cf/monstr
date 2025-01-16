@@ -4,8 +4,8 @@
     <i v-if="sortedBy === 'ascendent'" class="pi pi-sort-amount-up filter-icon"></i>
     <i v-else class="pi pi-sort-amount-down filter-icon"></i>
     <select v-model="sortedBy" @change="onSortByChange">
-      <option value="ascendent">A-Z</option>
-      <option value="descendent">Z-A</option>
+      <option value="ascendent">A-Z (Ascending the Abyss)</option>
+      <option value="descendent">Z-A (Creeps at the Top)</option>
     </select>
   </div>
 </template>

@@ -1,41 +1,24 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-
-function searchPosts() {
-  fetch('api/cards')
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-}
-
-function searchCategories() {
-  fetch('api/categories')
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-}
-
-searchPosts()
-searchCategories()
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <!-- <header>
+    <nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+    </nav>
+  </header> -->
+  <main>
+    <HomeView />
+  </main>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
 
+<script setup lang="ts">
+// import { RouterLink, RouterView } from 'vue-router'
+import HomeView from './views/HomeView.vue'
+</script>
+
 <style scoped>
+/*
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -96,5 +79,5 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
-}
+} */
 </style>

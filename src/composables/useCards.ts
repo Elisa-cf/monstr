@@ -9,7 +9,6 @@ export function useCards() {
   const loadCards = async () => {
     try {
       const fetchedCards = await fetchCards()
-      console.log('Fetched Cards:', fetchedCards)
       cards.value = fetchedCards
     } catch (error) {
       console.error('Error fetching cards:', error)

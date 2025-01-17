@@ -4,21 +4,51 @@
     <i v-if="sortedBy === 'ascendent'" class="pi pi-sort-amount-up filter-icon"></i>
     <i v-else class="pi pi-sort-amount-down filter-icon"></i>
     <select v-model="sortedBy" @change="onSortByChange">
-      <option value="ascendent">A-Z (Ascending the Abyss)</option>
-      <option value="descendent">Z-A (Creeps at the Top)</option>
+      <option value="ascendent">{{ optionText.ascendent }}</option>
+      <option value="descendent">{{ optionText.descendent }}</option>
     </select>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineEmits, ref } from 'vue'
+import { defineEmits, ref, watch, onMounted } from 'vue'
 
 const emit = defineEmits(['sort'])
 const sortedBy = ref('ascendent')
 
+const optionText = ref({
+  ascendent: 'A-Z (Ascending the Abyss)',
+  descendent: 'Z-A (Creeps at the Top)',
+})
+
 const onSortByChange = () => {
   emit('sort', sortedBy.value)
 }
+
+const updateOptionText = () => {
+  if (window.innerWidth < 768) {
+    optionText.value = {
+      ascendent: 'A-Z',
+      descendent: 'Z-A',
+    }
+  } else {
+    optionText.value = {
+      ascendent: 'A-Z (Ascending the Abyss)',
+      descendent: 'Z-A (Creeps at the Top)',
+    }
+  }
+}
+
+onMounted(() => {
+  updateOptionText()
+})
+
+watch(
+  () => window.innerWidth,
+  () => {
+    updateOptionText()
+  },
+)
 </script>
 
 <style scoped>

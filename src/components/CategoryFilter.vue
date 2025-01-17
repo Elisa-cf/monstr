@@ -18,15 +18,21 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, ref } from 'vue'
-import { categories } from '@/utils/fetchCardsData'
+import { defineEmits, ref, onMounted } from 'vue'
+import { useCards } from '@/composables/useCards'
 
 const emit = defineEmits(['filter'])
 const selectedCategory = ref('')
 
+const { categories, loadCategories } = useCards()
+
 const onCategoryChange = () => {
   emit('filter', selectedCategory.value)
 }
+
+onMounted(async () => {
+  await loadCategories()
+})
 </script>
 
 <style scoped>

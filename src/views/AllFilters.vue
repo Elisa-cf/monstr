@@ -2,8 +2,11 @@
   <div class="hero">
     <div class="wrapper">
       <SearchBar @search="handleSearch" />
-      <CategoryFilter :categories="categories" @filter="handleFilter" />
-      <SortByFilter @sort="handleSort" />
+      <div class="container-category-sort">
+        <CategoryFilter :categories="categories" @filter="handleFilter" />
+        <SortByFilter @sort="handleSort" />
+      </div>
+
       <div class="button-container">
         <button
           class="random-button"
@@ -93,20 +96,23 @@ const handleSort = (sortedBy: string) => {
 
 <style scoped>
 @import '@/assets/animations.css';
-
 .wrapper {
-  margin: 20px 16px;
   background-color: #aee68c;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 14px;
   max-width: 800px;
   z-index: 10;
+}
+
+.container-category-sort {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+
   position: relative;
 }
 

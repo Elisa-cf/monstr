@@ -2,7 +2,7 @@
   <section class="card-list-wrapper">
     <h1 class="title">{{ title }}</h1>
     <ul class="card-list">
-      <EmptyFavoriteMessage v-if="cards.length === 0" />
+      <EmptyFavoriteMessage v-if="cards.length === 0" :message="message" />
       <CardListItem
         v-for="card in cards"
         :key="card.id"
@@ -17,9 +17,14 @@
 import CardListItem from '../components/CardListItem.vue'
 import EmptyFavoriteMessage from '@/components/EmptyFavoriteMessage.vue'
 import type { Card } from '../types/interfaces'
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits, computed } from 'vue'
 
-const props = defineProps<{ cards: Card[]; title: string; favoriteCards: Card[] }>()
+const props = defineProps<{
+  cards: Card[]
+  title: string
+  cardType: string
+  favoriteCards: Card[]
+}>()
 const emit = defineEmits(['toggleFavorite'])
 
 const isFavorited = (card: Card) => {
@@ -28,6 +33,13 @@ const isFavorited = (card: Card) => {
 const toggleFavorite = (card: Card) => {
   emit('toggleFavorite', card)
 }
+
+const message = computed(() => {
+  if (props.cardType === 'favorite') {
+    return 'No monstrous crushes yet!'
+  }
+  return 'No top terrors yet!'
+})
 </script>
 
 <style scoped>

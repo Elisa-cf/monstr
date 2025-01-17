@@ -1,10 +1,14 @@
 <template>
   <div class="empty-favorites">
-    <p>No monstrous crushes yet!</p>
+    <p>{{ message }}</p>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { defineProps } from 'vue'
+
+defineProps<{ message: string }>()
+</script>
 
 <style scoped>
 .empty-favorites {

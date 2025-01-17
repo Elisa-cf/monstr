@@ -14,6 +14,8 @@
   justify-content: center;
   align-items: center;
   height: 100vi;
+  background-color: #1b1b1b;
+  z-index: 1000;
 }
 
 .lds-heart,
@@ -75,6 +77,12 @@
   }
   100% {
     transform: scale(0.9);
+  }
+}
+
+@media (min-width: 1024px) {
+  .spinner-wrapper {
+    height: 70vh;
   }
 }
 </style>

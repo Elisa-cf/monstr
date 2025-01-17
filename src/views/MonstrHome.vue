@@ -11,12 +11,14 @@
           title="darkest crushes"
           @toggleFavorite="toggleFavorite"
           :favoriteCards="favoriteCards"
+          cardType="favorite"
         />
         <CardListMonsters
           :cards="filteredCards"
           title="top terrors"
           @toggleFavorite="toggleFavorite"
           :favoriteCards="favoriteCards"
+          cardType="normal"
         />
       </div>
 

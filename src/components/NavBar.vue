@@ -27,35 +27,8 @@ import { RouterLink } from 'vue-router'
   box-shadow: black 0px 3px 3px;
 }
 
-.title {
-  display: none;
-}
-
 .logo-container {
   width: 6rem;
-}
-
-@media (min-width: 768px) {
-  .logo-container {
-    width: 8rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .logo-container {
-    width: 10rem;
-  }
-  .title {
-    font-style: italic;
-    font-size: 30px;
-    color: #6f4181;
-    font-weight: bold;
-    text-shadow: white 1px 1px 0px;
-    display: block;
-  }
-  .nav {
-    justify-content: space-between;
-  }
 }
 
 .logo {
@@ -69,14 +42,15 @@ import { RouterLink } from 'vue-router'
   text-shadow: black 3px 3px 1px;
 }
 
-.nav-links {
-  display: none;
+@media (min-width: 768px) {
+  .logo-container {
+    width: 8rem;
+  }
 }
 
-@media (min-width: 640px) {
-  .nav-links {
-    display: flex;
-    gap: 0.5rem;
+@media (min-width: 1024px) {
+  .logo-container {
+    width: 10rem;
   }
 }
 

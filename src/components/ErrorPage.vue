@@ -23,6 +23,7 @@ import { RouterLink } from 'vue-router'
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #1b1b1b;
 }
 
 .error-page h1 {

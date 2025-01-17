@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, ref, watch, onMounted } from 'vue'
+import { defineEmits, ref, onBeforeUnmount, onMounted } from 'vue'
 
 const emit = defineEmits(['sort'])
 const sortedBy = ref('ascendent')
@@ -41,14 +41,12 @@ const updateOptionText = () => {
 
 onMounted(() => {
   updateOptionText()
+  window.addEventListener('resize', updateOptionText)
 })
 
-watch(
-  () => window.innerWidth,
-  () => {
-    updateOptionText()
-  },
-)
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateOptionText)
+})
 </script>
 
 <style scoped>
@@ -66,7 +64,7 @@ watch(
 
 select {
   width: 100%;
-  padding: 8px 6px 8px 24px;
+  padding: 8px 4px 8px 24px;
   margin-bottom: 16px;
   border: 2px solid #ddd;
   border-radius: 4px;

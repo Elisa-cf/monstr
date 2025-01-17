@@ -1,26 +1,31 @@
 <template>
   <main>
     <AllFilters @updateFilters="updateFilters" @pickRandomCard="openRandomCardModal" />
-    <div class="app">
-      <CardList
-        :cards="favoriteCards"
-        title="darkest crushes"
-        @toggleFavorite="toggleFavorite"
-        :favoriteCards="favoriteCards"
-      />
-      <CardList
-        :cards="filteredCards"
-        title="top terrors"
-        @toggleFavorite="toggleFavorite"
-        :favoriteCards="favoriteCards"
+    <div v-if="isLoading">
+      <LoadingSpinner />
+    </div>
+    <div v-else>
+      <div class="app">
+        <CardList
+          :cards="favoriteCards"
+          title="darkest crushes"
+          @toggleFavorite="toggleFavorite"
+          :favoriteCards="favoriteCards"
+        />
+        <CardList
+          :cards="filteredCards"
+          title="top terrors"
+          @toggleFavorite="toggleFavorite"
+          :favoriteCards="favoriteCards"
+        />
+      </div>
+
+      <RandomCardModal
+        v-if="isRandomCardModalOpen"
+        :card="randomCard"
+        @close="isRandomCardModalOpen = false"
       />
     </div>
-
-    <RandomCardModal
-      v-if="isRandomCardModalOpen"
-      :card="randomCard"
-      @close="isRandomCardModalOpen = false"
-    />
   </main>
 </template>
 
@@ -32,6 +37,8 @@ import { loadCards, loadCategories, cards } from '@/utils/fetchCardsData'
 import type { FilterParams } from '@/types/interfaces'
 import RandomCardModal from '../components/RandomCardModal.vue'
 import type { Card } from '@/types/interfaces'
+import { fetchCards } from '@/api/api'
+import LoadingSpinner from '@/utils/LoadingSpinner.vue'
 
 const searchQuery = ref('')
 const selectedCategory = ref('')
@@ -39,6 +46,9 @@ const selectedSortBy = ref('')
 const isRandomCardModalOpen = ref(false)
 const randomCard = ref<Card | null>(null)
 const favoriteCards = ref<Card[]>([])
+
+const isLoading = ref(true)
+const localCards = ref<Card[]>([])
 
 const updateFilters = ({
   searchQuery: query,
@@ -86,6 +96,16 @@ const toggleFavorite = (card: Card) => {
 onMounted(() => {
   loadCards()
   loadCategories()
+})
+onMounted(async () => {
+  try {
+    const fetchedCards = await fetchCards()
+    localCards.value = fetchedCards
+  } catch (error) {
+    console.error('Error fetching cards:', error)
+  } finally {
+    isLoading.value = false
+  }
 })
 </script>
 <style scoped>

@@ -47,13 +47,14 @@ const getImageSrc = (id: string) => {
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   z-index: 9999;
   cursor: pointer;
 }
 
 /* Modal Content */
 .modal-content {
+  top: 20%;
   background: white;
   border-radius: 50%;
   width: 85%;

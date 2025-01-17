@@ -1,17 +1,12 @@
 <template>
   <header>
     <nav class="nav">
-      <RouterLink to="/home">
+      <RouterLink to="/">
         <div class="logo-container">
           <h1 class="logo">MONSTR</h1>
         </div>
       </RouterLink>
       <p class="title">Like Tinder, but monstrous!</p>
-      <div class="nav-links">
-        <RouterLink to="/about">
-          <button class="nav-button">Favorites</button>
-        </RouterLink>
-      </div>
     </nav>
   </header>
 </template>

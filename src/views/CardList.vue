@@ -1,5 +1,6 @@
 <template>
   <h1 class="title">{{ title }}</h1>
+
   <ul class="card-list">
     <EmptyFavoriteMessage v-if="cards.length === 0" />
     <CardListItem
@@ -11,7 +12,6 @@
     />
   </ul>
 </template>
-
 <script setup lang="ts">
 import CardListItem from '../components/CardListItem.vue'
 import EmptyFavoriteMessage from '@/components/EmptyFavoriteMessage.vue'
@@ -39,6 +39,7 @@ const toggleFavorite = (card: Card) => {
   font-weight: 700;
   line-height: 2.25;
 }
+
 .card-list {
   padding: 0;
   list-style: none;

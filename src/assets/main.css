@@ -26,6 +26,10 @@ a {
   padding: 0 1rem;
 }
 
+.list {
+  list-style: none;
+}
+
 #app {
   background-color: #1b1b1b;
 }

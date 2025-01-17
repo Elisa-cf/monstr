@@ -24,7 +24,7 @@ import { ref } from 'vue'
 import SearchBar from '../components/SearchBar.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
 import SortByFilter from '../components/SortByFilter.vue'
-import { categories } from '@/utils/fetchCardsData'
+import { useCards } from '@/composables/useCards'
 
 const emit = defineEmits(['updateFilters', 'pickRandomCard'])
 const searchQuery = ref('')
@@ -32,6 +32,8 @@ const selectedCategory = ref('')
 const selectedSortBy = ref('')
 const isTrembling = ref(false)
 const buttonText = ref('Unleash Your Monster Mate!')
+
+const { categories } = useCards()
 
 let trembleTimeout: ReturnType<typeof setTimeout>
 
@@ -90,6 +92,8 @@ const handleSort = (sortedBy: string) => {
 </script>
 
 <style scoped>
+@import '@/assets/animations.css';
+
 .wrapper {
   margin: 20px 16px;
   background-color: #aee68c;
@@ -127,58 +131,7 @@ const handleSort = (sortedBy: string) => {
   transform: scale(1.1);
 }
 
-.tremble {
-  display: inline-block;
-  animation: tremble 0.2s infinite;
-}
-
-.shining-effect {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  animation: shine 2s infinite;
-}
-
-@keyframes tremble {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-2px);
-  }
-  50% {
-    transform: translateX(2px);
-  }
-  75% {
-    transform: translateX(-2px);
-  }
-}
-
-@keyframes shine {
-  0% {
-    left: -100%;
-  }
-  50% {
-    left: 100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
 @media (min-width: 768px) {
-  .logo-container {
-    width: 8rem;
-  }
   .wrapper {
     margin: 40px auto;
   }

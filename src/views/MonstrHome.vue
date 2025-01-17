@@ -6,13 +6,13 @@
     </div>
     <div v-else>
       <div class="app">
-        <CardList
+        <CardListMonsters
           :cards="favoriteCards"
           title="darkest crushes"
           @toggleFavorite="toggleFavorite"
           :favoriteCards="favoriteCards"
         />
-        <CardList
+        <CardListMonsters
           :cards="filteredCards"
           title="top terrors"
           @toggleFavorite="toggleFavorite"
@@ -31,14 +31,13 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import CardList from '../views/CardList.vue'
+import CardListMonsters from '../views/CardListMonsters.vue'
 import AllFilters from '../views/AllFilters.vue'
-import { loadCards, loadCategories, cards } from '@/utils/fetchCardsData'
 import type { FilterParams } from '@/types/interfaces'
 import RandomCardModal from '../components/RandomCardModal.vue'
 import type { Card } from '@/types/interfaces'
-import { fetchCards } from '@/api/api'
 import LoadingSpinner from '@/utils/LoadingSpinner.vue'
+import { useCards } from '@/composables/useCards'
 
 const searchQuery = ref('')
 const selectedCategory = ref('')
@@ -46,9 +45,9 @@ const selectedSortBy = ref('')
 const isRandomCardModalOpen = ref(false)
 const randomCard = ref<Card | null>(null)
 const favoriteCards = ref<Card[]>([])
-
 const isLoading = ref(true)
-const localCards = ref<Card[]>([])
+
+const { cards, loadCards, loadCategories } = useCards()
 
 const updateFilters = ({
   searchQuery: query,
@@ -60,6 +59,7 @@ const updateFilters = ({
   selectedCategory.value = category
   selectedSortBy.value = sortBy
 }
+
 const filteredCards = computed(() => {
   // Filter the cards first
   const filtered = cards.value.filter((card) => {
@@ -93,14 +93,10 @@ const toggleFavorite = (card: Card) => {
   }
 }
 
-onMounted(() => {
-  loadCards()
-  loadCategories()
-})
 onMounted(async () => {
   try {
-    const fetchedCards = await fetchCards()
-    localCards.value = fetchedCards
+    await loadCards()
+    await loadCategories()
   } catch (error) {
     console.error('Error fetching cards:', error)
   } finally {
@@ -108,8 +104,5 @@ onMounted(async () => {
   }
 })
 </script>
-<style scoped>
-.title {
-  color: #8cef30;
-}
-</style>
+
+<style scoped></style>

@@ -34,15 +34,12 @@ const toggleFavorite = (card: Card) => {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #8cef30;
-  font-family: ui-sans-serif;
   font-size: 1.875rem;
   font-weight: 700;
   line-height: 2.25;
 }
 
 .card-list {
-  padding: 0;
-  list-style: none;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;

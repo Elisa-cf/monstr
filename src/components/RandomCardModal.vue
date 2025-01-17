@@ -61,8 +61,9 @@ const getImageSrc = (id: string) => {
   max-width: 350px;
   text-align: center;
   position: relative;
-  background-color: #ff9800;
+  background-color: #ffdc4b;
   z-index: 10000;
+  color: #394e64;
 }
 
 /* Close Button */

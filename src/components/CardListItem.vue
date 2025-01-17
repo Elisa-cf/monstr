@@ -3,7 +3,7 @@
     <div class="card-image-container">
       <img class="card-image" :src="getImageSrc(props.card.id)" :alt="props.card.name" />
       <i
-        :class="['heart-icon', isFavorited ? 'pi pi-heart-fill favorited' : 'pi pi-heart']"
+        :class="['heart-icon', props.isFavorited ? 'pi pi-heart-fill favorited' : 'pi pi-heart']"
         @click="toggleFavorite"
       ></i>
     </div>
@@ -13,14 +13,15 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref } from 'vue'
+import { defineProps } from 'vue'
 import type { Card } from '../types/interfaces'
 
-const props = defineProps<{ card: Card }>()
-const isFavorited = ref(false)
+const props = defineProps<{ card: Card; isFavorited: boolean }>()
+
+const emit = defineEmits(['toggleFavorite'])
 
 const toggleFavorite = () => {
-  isFavorited.value = !isFavorited.value
+  emit('toggleFavorite', props.card)
 }
 
 const getImageSrc = (id: string) => {
@@ -41,22 +42,24 @@ const getImageSrc = (id: string) => {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   transition: box-shadow 0.3s ease;
+  background-color: white;
 }
 
 .card-item:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   transform: scale(1.05);
+  border: 5px solid #90f032;
 }
 
 .card-item:hover .card-image-container {
-  background-color: #c8dde6;
+  background-color: #90f032;
 }
 
 .card-image-container {
   flex-shrink: 0;
   padding: 0 16px;
-  background-color: #e8f5e9;
+  background-color: #aee68c;
   border: 1px solid #ddd;
   border-radius: 8px;
   width: 100%;
@@ -94,7 +97,7 @@ const getImageSrc = (id: string) => {
   text-transform: capitalize;
   letter-spacing: 0.5px;
   font-family: ui-sans-serif;
-  color: #394e64;
+  color: #828f8f;
   font-size: 20px;
   flex-grow: 1;
 }

@@ -3,7 +3,12 @@
     <label for="category-select" class="filter-label">Select Category</label>
 
     <i class="pi pi-list filter-icon"></i>
-    <select id="category-select" v-model="selectedCategory" @change="onCategoryChange">
+    <select
+      id="category-select"
+      v-model="selectedCategory"
+      @change="onCategoryChange"
+      class="custom-select"
+    >
       <option value="">All The Monsterverse</option>
       <option v-for="category in categories" :key="category.id" :value="category.id">
         {{ category.title }}

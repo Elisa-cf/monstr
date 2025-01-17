@@ -1,18 +1,20 @@
 <template>
-  <div class="wrapper">
-    <SearchBar @search="handleSearch" />
-    <CategoryFilter :categories="categories" @filter="handleFilter" />
-    <SortByFilter @sort="handleSort" />
-    <div class="button-container">
-      <button
-        class="random-button"
-        @mouseover="handleMouseOver"
-        @mouseleave="handleMouseLeave"
-        @click="emitRandomCard"
-      >
-        <span :class="{ tremble: isTrembling }">{{ buttonText }}</span>
-        <div v-if="buttonText === 'Unleash Your Monster Mate!'" class="shining-effect"></div>
-      </button>
+  <div class="hero">
+    <div class="wrapper">
+      <SearchBar @search="handleSearch" />
+      <CategoryFilter :categories="categories" @filter="handleFilter" />
+      <SortByFilter @sort="handleSort" />
+      <div class="button-container">
+        <button
+          class="random-button"
+          @mouseover="handleMouseOver"
+          @mouseleave="handleMouseLeave"
+          @click="emitRandomCard"
+        >
+          <span :class="{ tremble: isTrembling }">{{ buttonText }}</span>
+          <div v-if="buttonText === 'Unleash Your Monster Mate!'" class="shining-effect"></div>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -89,10 +91,12 @@ const handleSort = (sortedBy: string) => {
 
 <style scoped>
 .wrapper {
-  margin-top: 20px;
-  background-color: #e8f5e9;
+  margin: 20px 16px;
+  background-color: #aee68c;
   padding: 20px;
   border-radius: 8px;
+  max-width: 800px;
+  z-index: 10;
 }
 
 .button-container {
@@ -105,8 +109,8 @@ const handleSort = (sortedBy: string) => {
 .random-button {
   padding: 12px 24px;
   font-size: 18px;
-  background-color: #ff9800;
-  color: white;
+  background-color: #c799d9;
+  color: #394e64;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -118,7 +122,8 @@ const handleSort = (sortedBy: string) => {
 }
 
 .random-button:hover {
-  background-color: #e68900;
+  background-color: #6f4181;
+  color: white;
   transform: scale(1.1);
 }
 
@@ -167,6 +172,28 @@ const handleSort = (sortedBy: string) => {
   }
   100% {
     left: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-container {
+    width: 8rem;
+  }
+  .wrapper {
+    margin: 40px auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    background-image: url('../assets/images/monstr_hero.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+    color: white;
+    margin-top: -50px;
+    position: relative;
+    z-index: 1;
   }
 }
 </style>

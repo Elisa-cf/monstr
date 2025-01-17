@@ -1,23 +1,37 @@
 <template>
-  <h1 class="title">top terrors</h1>
+  <h1 class="title">{{ title }}</h1>
   <ul class="card-list">
-    <CardListItem v-for="card in cards" :key="card.id" :card="card" />
+    <CardListItem
+      v-for="card in cards"
+      :key="card.id"
+      :card="card"
+      :isFavorited="isFavorited(card)"
+      @toggleFavorite="toggleFavorite"
+    />
   </ul>
 </template>
 
 <script setup lang="ts">
 import CardListItem from '../components/CardListItem.vue'
 import type { Card } from '../types/interfaces'
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
-defineProps<{ cards: Card[] }>()
+const props = defineProps<{ cards: Card[]; title: string; favoriteCards: Card[] }>()
+const emit = defineEmits(['toggleFavorite'])
+
+const isFavorited = (card: Card) => {
+  return props.favoriteCards.some((favCard) => favCard.id === card.id)
+}
+const toggleFavorite = (card: Card) => {
+  emit('toggleFavorite', card)
+}
 </script>
 
 <style scoped>
 .title {
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #394e64;
+  color: #8cef30;
   font-family: ui-sans-serif;
   font-size: 1.875rem;
   font-weight: 700;

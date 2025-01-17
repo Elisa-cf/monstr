@@ -1,9 +1,21 @@
 <template>
-  <main class="app">
-    <h2>Monstr(like Tinder, but monstrous!)</h2>
+  <main>
     <AllFilters @updateFilters="updateFilters" @pickRandomCard="openRandomCardModal" />
-    <FavoriteList :cards="cards" />
-    <CardList :cards="filteredCards" />
+    <div class="app">
+      <CardList
+        :cards="favoriteCards"
+        title="darkest crushes"
+        @toggleFavorite="toggleFavorite"
+        :favoriteCards="favoriteCards"
+      />
+      <CardList
+        :cards="filteredCards"
+        title="top terrors"
+        @toggleFavorite="toggleFavorite"
+        :favoriteCards="favoriteCards"
+      />
+    </div>
+
     <RandomCardModal
       v-if="isRandomCardModalOpen"
       :card="randomCard"
@@ -18,7 +30,6 @@ import CardList from '../views/CardList.vue'
 import AllFilters from '../views/AllFilters.vue'
 import { loadCards, loadCategories, cards } from '@/utils/fetchCardsData'
 import type { FilterParams } from '@/types/interfaces'
-import FavoriteList from './FavoriteList.vue'
 import RandomCardModal from '../components/RandomCardModal.vue'
 import type { Card } from '@/types/interfaces'
 
@@ -27,6 +38,7 @@ const selectedCategory = ref('')
 const selectedSortBy = ref('')
 const isRandomCardModalOpen = ref(false)
 const randomCard = ref<Card | null>(null)
+const favoriteCards = ref<Card[]>([])
 
 const updateFilters = ({
   searchQuery: query,
@@ -62,8 +74,22 @@ const openRandomCardModal = () => {
   isRandomCardModalOpen.value = true
 }
 
+const toggleFavorite = (card: Card) => {
+  const index = favoriteCards.value.findIndex((favCard) => favCard.id === card.id)
+  if (index === -1) {
+    favoriteCards.value.push(card)
+  } else {
+    favoriteCards.value.splice(index, 1)
+  }
+}
+
 onMounted(() => {
   loadCards()
   loadCategories()
 })
 </script>
+<style scoped>
+.title {
+  color: #8cef30;
+}
+</style>

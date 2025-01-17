@@ -1,6 +1,7 @@
 <template>
   <h1 class="title">{{ title }}</h1>
   <ul class="card-list">
+    <EmptyFavoriteMessage v-if="cards.length === 0" />
     <CardListItem
       v-for="card in cards"
       :key="card.id"
@@ -13,6 +14,7 @@
 
 <script setup lang="ts">
 import CardListItem from '../components/CardListItem.vue'
+import EmptyFavoriteMessage from '@/components/EmptyFavoriteMessage.vue'
 import type { Card } from '../types/interfaces'
 import { defineProps, defineEmits } from 'vue'
 

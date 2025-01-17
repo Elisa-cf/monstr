@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <!-- Fireworks - Adjusted to overlap and be more visible -->
+    <!-- Fireworks -->
     <div class="fireworks" style="left: 10%; top: 0"></div>
     <div class="fireworks" style="right: 30%; top: 10%; animation-delay: -0.4s"></div>
     <div class="fireworks" style="left: 20%; top: 30%; animation-delay: -1.7s"></div>
@@ -55,36 +55,49 @@ const getImageSrc = (id: string) => {
 /* Modal Content */
 .modal-content {
   background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 90%;
+  border-radius: 50%;
+  width: 85%;
   max-width: 350px;
+  aspect-ratio: 1 / 1;
   text-align: center;
   position: relative;
-  background-color: #ffdc4b;
+  background-color: #c799d9;
   z-index: 10000;
   color: #394e64;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Close Button */
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 30px;
+  right: 8px;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 30px;
   cursor: pointer;
   z-index: 10002;
+  background: #c799d9;
+  border-radius: 50%;
+  padding: 12px;
 }
 
-.pi-times {
-  font-size: 1.5rem;
+/* Rounded Image */
+.modal-content img {
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Icon inside the button */
+.close-button .pi {
+  font-size: 30px;
   color: #394e64;
-}
-
-.header {
-  margin-bottom: 16px;
+  display: block;
 }
 
 /* Fireworks Styles */

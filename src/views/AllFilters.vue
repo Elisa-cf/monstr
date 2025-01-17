@@ -96,23 +96,35 @@ const handleSort = (sortedBy: string) => {
 
 <style scoped>
 @import '@/assets/animations.css';
-.wrapper {
+.hero {
+  position: sticky;
+  margin-bottom: 60px;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   background-color: #aee68c;
+}
+
+.wrapper {
   padding: 14px;
   max-width: 800px;
-  z-index: 10;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container-category-sort {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  gap: 10px;
+  gap: 5px;
+  width: 100%;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-
   position: relative;
 }
 
@@ -139,20 +151,23 @@ const handleSort = (sortedBy: string) => {
 
 @media (min-width: 768px) {
   .wrapper {
-    margin: 40px auto;
+    margin: 0 auto;
   }
 }
 
 @media (min-width: 1024px) {
   .hero {
-    background-image: url('../assets/images/monstr_hero.jpg');
-    background-size: cover;
-    background-position: center;
     padding: 40px 0;
-    color: white;
-    margin-top: -50px;
-    position: relative;
-    z-index: 1;
+    background-color: transparent;
+  }
+
+  .wrapper {
+    background-color: rgba(0, 0, 0, 0.67);
+    border-radius: 20px;
+  }
+  .container-category-sort {
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
   }
 }
 </style>

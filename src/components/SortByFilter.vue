@@ -66,7 +66,7 @@ watch(
 
 select {
   width: 100%;
-  padding: 8px 8px 8px 26px;
+  padding: 8px 6px 8px 24px;
   margin-bottom: 16px;
   border: 2px solid #ddd;
   border-radius: 4px;
@@ -88,5 +88,11 @@ select:focus {
   top: 50%;
   transform: translateY(-35%);
   color: #394e64;
+}
+
+@media (min-width: 1024px) {
+  .filter-label {
+    color: #ffffff;
+  }
 }
 </style>

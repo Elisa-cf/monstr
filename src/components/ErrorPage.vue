@@ -22,6 +22,7 @@ import { RouterLink } from 'vue-router'
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .error-page h1 {

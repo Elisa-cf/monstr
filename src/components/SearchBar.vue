@@ -65,4 +65,10 @@ input:focus {
   transform: translateY(-35%);
   color: #394e64;
 }
+
+@media (min-width: 1024px) {
+  .filter-label {
+    color: #ffffff;
+  }
+}
 </style>

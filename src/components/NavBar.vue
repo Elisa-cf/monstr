@@ -6,7 +6,6 @@
           <h1 class="logo">MONSTR</h1>
         </div>
       </RouterLink>
-      <p class="title">Like Tinder, but monstrous!</p>
     </nav>
   </header>
 </template>
@@ -17,6 +16,9 @@ import { RouterLink } from 'vue-router'
 
 <style scoped>
 .nav {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
   height: 50px;
   background-color: #1b1b1b;
   display: flex;
@@ -52,10 +54,7 @@ import { RouterLink } from 'vue-router'
     display: block;
   }
   .nav {
-    background-color: rgba(255, 255, 255, 0.632);
     justify-content: space-between;
-    z-index: 2;
-    position: relative;
   }
 }
 

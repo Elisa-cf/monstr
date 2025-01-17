@@ -1,6 +1,6 @@
 <template>
   <div class="empty-favorites">
-    <h3>No monstrous crushes yet!</h3>
+    <p>No monstrous crushes yet!</p>
   </div>
 </template>
 
@@ -8,8 +8,9 @@
 
 <style scoped>
 .empty-favorites {
-  color: white;
-  font-size: 18px;
+  color: #c799d9;
+  font-size: 16px;
+
   white-space: nowrap;
 }
 </style>

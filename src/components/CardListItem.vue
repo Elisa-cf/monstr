@@ -47,13 +47,14 @@ const getImageSrc = (id: string) => {
 
 .card-item:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 16px;
-  transform: scale(1.05);
-  border: 5px solid #90f032;
+  border-radius: 30px;
+  transform: scale(1.1);
+  border: 4px solid #90f032;
 }
 
 .card-item:hover .card-image-container {
   background-color: #90f032;
+  border-radius: 30px;
 }
 
 .card-image-container {
@@ -71,8 +72,8 @@ const getImageSrc = (id: string) => {
 
 .heart-icon {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 6px;
+  right: 8px;
   color: #394e64;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -80,11 +81,14 @@ const getImageSrc = (id: string) => {
 
 .heart-icon:hover,
 .heart-icon:active {
-  transform: scale(1.5);
+  transform: scale(2);
 }
 
 .favorited {
   color: red;
+  transform: scale(2);
+  top: 0px;
+  right: 0px;
 }
 
 .card-image {

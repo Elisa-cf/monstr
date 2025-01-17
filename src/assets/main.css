@@ -11,7 +11,7 @@ body,
 select,
 input,
 button {
-  font-family: ui-sans-serif;
+  font-family: 'Open Sans', serif;
   font-size: 100%;
 }
 
@@ -32,6 +32,17 @@ a {
 
 #app {
   background-color: #1b1b1b;
+  padding-bottom: 50px;
+}
+
+@media (min-width: 1024px) {
+  #app {
+    background-image: url('../assets/images/monstr_hero.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    height: 100%;
+  }
 }
 
 /* @import './base.css';

@@ -1,12 +1,21 @@
 <template>
-  <div class="lds-heart">
-    <div></div>
+  <div class="spinner-wrapper">
+    <div class="lds-heart">
+      <div></div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts"></script>
 
 <style scoped>
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vi;
+}
+
 .lds-heart,
 .lds-heart div,
 .lds-heart div:after,

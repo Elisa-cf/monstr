@@ -54,10 +54,10 @@ const updateFilters = ({
   selectedCategory: category,
   selectedSortBy: sortBy,
 }: FilterParams) => {
-  console.log(sortBy)
   searchQuery.value = query
   selectedCategory.value = category
   selectedSortBy.value = sortBy
+  window.scrollTo(0, 0)
 }
 
 const filteredCards = computed(() => {

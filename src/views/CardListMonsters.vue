@@ -50,7 +50,7 @@ const toggleFavorite = (card: Card): void => {
  * @returns {string} The message to display.
  */
 const message = computed((): string =>
-  props.cardType === 'favorite' ? 'No monstrous crushes yet!' : 'No top terrors yet!',
+  props.cardType === 'favorite' ? 'No monstrous crushes yet!' : 'No top terrors found!',
 )
 </script>
 
@@ -62,8 +62,8 @@ const message = computed((): string =>
 .card-list-title {
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #c4ffab;
-  font-size: 24px;
+  color: var(--color-tertiary);
+  font-size: var(--large-font-size);
   font-weight: 700;
   line-height: 2.25;
   letter-spacing: 0.3px;
@@ -86,7 +86,7 @@ const message = computed((): string =>
     grid-template-columns: repeat(6, 1fr);
   }
   .card-list-wrapper {
-    background-color: #1b1b1b;
+    background-color: var(--background-color);
     padding-right: 20px;
     padding-left: 20px;
   }

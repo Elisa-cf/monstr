@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   height: 100vi;
-  background-color: #1b1b1b;
+  background-color: var(--background-color);
   z-index: 1000;
 }
 
@@ -52,11 +52,11 @@
 }
 .lds-heart div:before {
   left: -24px;
-  border-radius: 50% 0 0 50%;
+  border-radius: var(--rounded-border-radius) 0 0 var(--rounded-border-radius);
 }
 .lds-heart div:after {
   top: -24px;
-  border-radius: 50% 50% 0 0;
+  border-radius: var(--rounded-border-radius) var(--rounded-border-radius) 0 0;
 }
 
 @keyframes lds-heart {
@@ -82,7 +82,8 @@
 
 @media (min-width: 1024px) {
   .spinner-wrapper {
-    height: 70vh;
+    height: 100vh;
+    margin-top: -20px;
   }
 }
 </style>

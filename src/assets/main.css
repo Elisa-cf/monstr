@@ -1,3 +1,5 @@
+@import './base.css';
+
 *,
 ::after,
 ::before {
@@ -21,19 +23,101 @@ a {
   color: inherit;
 }
 
+#app {
+  background-color: var(--background-color);
+  min-height: 120vh;
+}
+
 .app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.list {
+ul,
+li {
   list-style: none;
 }
 
-#app {
-  background-color: #1b1b1b;
-  min-height: 120vh;
+/* reusable input filter for sort by and select category */
+
+.filter-container {
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+  color: var(--color-grey-1);
+}
+
+.filter-label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: var(--color-grey-1);
+}
+
+.filter-icon {
+  position: absolute;
+  left: 8px;
+  top: 45%;
+  color: var(--color-grey-1);
+}
+
+.chevron-icon {
+  position: absolute;
+  right: 8px;
+  top: 45%;
+  transform: scale(0.7);
+  color: var(--color-grey-1);
+}
+
+.custom-select {
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--color-grey-1);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  background-color: var(--color-white);
+  height: 39px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.custom-select:focus {
+  border-color: var(--border-color);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--shadow-color);
+}
+
+.selected-option {
+  padding-left: 32px;
+}
+
+.options-list {
+  position: absolute;
+  top: 80%;
+  left: 0;
+  width: 100%;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.options-list li {
+  padding: var(--xs-padding-size);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.options-list li:hover,
+.options-list li.selected {
+  background-color: var(--color-primary);
+  color: white;
 }
 
 @media (min-width: 1024px) {
@@ -44,29 +128,8 @@ a {
     background-position: top;
     height: auto;
   }
-}
 
-/* @import './base.css';
-@import './components.css';
-
-
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+  .filter-label {
+    color: var(--color-white);
   }
 }
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
-*/

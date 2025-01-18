@@ -28,51 +28,25 @@ const onSearch = () => {
 </script>
 
 <style scoped>
-.filter-container {
-  position: relative;
-  width: 100%;
-}
-
-.filter-label {
-  display: block;
-  margin-bottom: 4px;
-  font-weight: bold;
-  color: #394e64;
-}
-
-.filter-icon {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-35%);
-  color: #394e64;
-}
-
 .search-input {
   width: 100%;
-  padding: 8px 8px 8px 32px;
-  margin-bottom: 16px;
+  padding: var(--xs-padding-size) var(--xs-padding-size) var(--xs-padding-size) 32px;
+  margin-bottom: var(--small-margin-size);
   border: 2px solid #ddd;
   border-radius: 4px;
-  color: #394e64;
+  color: var(--color-grey-1);
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease;
 }
 
-search-input::placeholder {
-  color: #394e64;
+.search-input::placeholder {
+  color: var(--color-grey-1);
 }
 
 search-input:focus {
-  border-color: #c8dde6;
+  border-color: var(--border-color);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(57, 78, 100, 0.5);
-}
-
-@media (min-width: 1024px) {
-  .filter-label {
-    color: #ffffff;
-  }
+  box-shadow: 0 0 0 2px var(--shadow-color);
 }
 </style>

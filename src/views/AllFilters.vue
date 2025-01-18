@@ -82,7 +82,7 @@ const handleSort = (sortedBy: string): void => {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #aee68c;
+  background-color: var(--color-primary);
 }
 
 .all-filters-wrapper {
@@ -107,11 +107,11 @@ const handleSort = (sortedBy: string): void => {
     background-color: rgba(0, 0, 0, 0.67);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: var(--medium-gap);
   }
   .container-category-sort {
     grid-template-columns: 2fr 1fr;
-    gap: 10px;
+    gap: var(--medium-gap);
   }
 
   .shuffle-button-container {

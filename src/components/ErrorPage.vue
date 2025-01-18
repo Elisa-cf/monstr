@@ -23,35 +23,35 @@ import { RouterLink } from 'vue-router'
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1b1b1b;
+  background-color: var(--background-color);
 }
 
 .error-code {
   font-size: 100px;
   margin: 0;
-  color: #8cef30;
+  color: var(--color-secondary);
 }
 
 .error-message {
-  font-size: 24px;
+  font-size: var(--large-font-size);
   margin: 20px 0;
-  color: #8cef30;
+  color: var(--color-secondary);
 }
 
 .error-description {
-  font-size: 16px;
-  color: #aee68c;
+  font-size: var(--xs-font-size);
+  color: var(--color-primary);
   margin-bottom: 30px;
 }
 
 .home-link {
-  font-size: 18px;
-  color: #c799d9;
+  font-size: var(--small-font-size);
+  color: var(--color-purple-1);
   text-decoration: none;
 }
 
 .home-link:hover {
   text-decoration: underline;
-  color: #6f4181;
+  color: var(--color-purple-2);
 }
 </style>

@@ -1,20 +1,57 @@
 <template>
   <div class="filter-container">
-    <label for="sort-by" class="filter-label">Sort By</label>
-    <i v-if="sortedBy === 'ascendent'" class="pi pi-sort-amount-up filter-icon"></i>
-    <i v-else class="pi pi-sort-amount-down filter-icon"></i>
-    <select id="sort-by" v-model="sortedBy" @change="onSortByChange">
-      <option value="ascendent">{{ optionText.ascendent }}</option>
-      <option value="descendent">{{ optionText.descendent }}</option>
-    </select>
+    <label for="sort-select" class="filter-label">Sort by</label>
+    <div class="custom-select" @click="toggleDropdown">
+      <div class="selected-option">
+        <i
+          :class="
+            sortedBy === 'ascendent'
+              ? 'pi pi-sort-amount-up filter-icon'
+              : 'pi pi-sort-amount-down filter-icon'
+          "
+        ></i>
+
+        <p>
+          {{ sortedBy === 'ascendent' ? optionText.ascendent : optionText.descendent }}
+        </p>
+        <i class="pi pi-chevron-down chevron-icon"></i>
+      </div>
+      <!-- Close the dropdown when clicking outside -->
+      <ul v-if="isDropdownOpen" class="options-list">
+        <li
+          :class="{ selected: 'ascendent' === sortedBy }"
+          @click="
+            () => {
+              selectSort('ascendent')
+              toggleDropdown()
+            }
+          "
+        >
+          {{ optionText.ascendent }}
+        </li>
+        <li
+          :class="{ selected: 'descendent' === sortedBy }"
+          @click="
+            () => {
+              selectSort('descendent')
+              toggleDropdown()
+            }
+          "
+        >
+          {{ optionText.descendent }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineEmits, ref, onBeforeUnmount, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const emit = defineEmits(['sort'])
 const sortedBy = ref('ascendent')
+
+const isDropdownOpen = ref(false)
 
 const optionText = ref({
   ascendent: 'A-Z (Ascending the Abyss)',
@@ -22,10 +59,28 @@ const optionText = ref({
 })
 
 /**
- * Emits the sort event with the current sort order.
+ * Toggles the dropdown open and closed.
  */
-const onSortByChange = (): void => {
+const toggleDropdown = (): void => {
+  isDropdownOpen.value = !isDropdownOpen.value
+}
+
+/**
+ * Closes the dropdown.
+ */
+const closeDropdown = (): void => {
+  isDropdownOpen.value = false
+}
+
+/**
+ * Selects the sort option.
+ *
+ * @param {string} sortBy The sort option to select.
+ */
+const selectSort = (sortBy: string): void => {
+  sortedBy.value = sortBy
   emit('sort', sortedBy.value)
+  closeDropdown()
 }
 
 /**
@@ -33,7 +88,7 @@ const onSortByChange = (): void => {
  */
 const updateOptionText = (): void => {
   optionText.value =
-    window.innerWidth < 768
+    window.innerWidth < 1400
       ? { ascendent: 'A-Z', descendent: 'Z-A' }
       : { ascendent: 'A-Z (Ascending the Abyss)', descendent: 'Z-A (Creeps at the Top)' }
 }
@@ -48,48 +103,4 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<style scoped>
-.filter-container {
-  position: relative;
-  width: 100%;
-}
-
-.filter-label {
-  display: block;
-  margin-bottom: 4px;
-  font-weight: bold;
-  color: #394e64;
-}
-
-.filter-icon {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-35%);
-  color: #394e64;
-}
-
-select {
-  width: 100%;
-  padding: 8px 4px 8px 24px;
-  margin-bottom: 16px;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  color: #394e64;
-  transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-select:focus {
-  border-color: #c8dde6;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(57, 78, 100, 0.5);
-}
-
-@media (min-width: 1024px) {
-  .filter-label {
-    color: #ffffff;
-  }
-}
-</style>
+<style scoped></style>

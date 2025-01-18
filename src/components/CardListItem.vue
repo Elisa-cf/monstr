@@ -39,7 +39,7 @@ const toggleFavorite = (): void => {
   padding: 10px;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: var(--medium-border-radius);
   transition: box-shadow 0.3s ease;
   background-color: white;
 }
@@ -48,15 +48,15 @@ const toggleFavorite = (): void => {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
   transform: scale(1.1);
-  border: 4px solid #90f032;
+  border: 4px solid var(--color-secondary);
 }
 
 .card-image-container {
   flex-shrink: 0;
-  padding: 0 16px;
-  background-color: #aee68c;
+  padding: 0 var(--small-padding-size);
+  background-color: var(--color-primary);
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: var(--medium-border-radius);
   width: 100%;
   max-width: 160px;
   display: flex;
@@ -65,7 +65,7 @@ const toggleFavorite = (): void => {
 }
 
 .card-item:hover .card-image-container {
-  background-color: #90f032;
+  background-color: var(--color-secondary);
   border-radius: 30px;
 }
 
@@ -78,8 +78,7 @@ const toggleFavorite = (): void => {
   position: absolute;
   top: 6px;
   right: 8px;
-  color: #394e64;
-  cursor: pointer;
+  color: var(--color-grey-1);
   transition: transform 0.3s ease;
 }
 
@@ -89,7 +88,7 @@ const toggleFavorite = (): void => {
 }
 
 .favorited {
-  color: red;
+  color: var(--color-red);
   transform: scale(2);
   top: 0px;
   right: 0px;
@@ -98,10 +97,10 @@ const toggleFavorite = (): void => {
 .card-name {
   padding: 14px;
   text-transform: capitalize;
-  letter-spacing: 0.5px;
-  font-family: ui-sans-serif;
-  color: #828f8f;
-  font-size: 20px;
+  letter-spacing: 0.2px;
+  line-height: 1.1;
+  color: var(--color-grey-2);
+  font-size: var(--medium-font-size);
   flex-grow: 1;
 }
 </style>

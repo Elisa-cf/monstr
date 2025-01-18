@@ -156,7 +156,8 @@ watch(favoriteCards, () => saveToLocalStorage<Card[]>('favoriteCards', favoriteC
 @media (min-width: 1024px) {
   .monstr-logo {
     display: block;
-    margin: 10px auto;
+    margin: 0 auto;
+    padding: 10px 0;
     max-height: 360px;
   }
 }

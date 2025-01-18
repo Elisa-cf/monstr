@@ -12,8 +12,8 @@ defineProps<{ message: string }>()
 
 <style scoped>
 .empty-favorites {
-  color: #c799d9;
-  font-size: 16px;
+  color: var(--color-purple-1);
+  font-size: var(--xs-font-size);
   white-space: nowrap;
 }
 </style>

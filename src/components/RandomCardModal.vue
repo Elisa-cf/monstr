@@ -45,22 +45,21 @@ const close = () => {
   justify-content: center;
   align-items: start;
   z-index: 9999;
-  cursor: pointer;
 }
 
 /* Modal Content */
 .modal-content {
   top: 20%;
   background: white;
-  border-radius: 50%;
+  border-radius: var(--rounded-border-radius);
   width: 85%;
   max-width: 350px;
   aspect-ratio: 1 / 1;
   text-align: center;
   position: relative;
-  background-color: #c799d9;
+  background-color: var(--color-purple-1);
   z-index: 10000;
-  color: #394e64;
+  color: var(--color-grey-1);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,21 +73,19 @@ const close = () => {
   right: 8px;
   background: none;
   border: none;
-  font-size: 30px;
-  cursor: pointer;
+  font-size: var(--xl-font-size);
   z-index: 10002;
-  background: #c799d9;
-  border-radius: 50%;
+  background: var(--color-purple-1);
+  border-radius: var(--rounded-border-radius);
   padding: 12px;
-  font-size: 30px;
-  color: #394e64;
+  color: var(--color-grey-1);
   display: block;
 }
 
 /* Rounded Image */
 .modal-image {
   width: 100%;
-  border-radius: 50%;
+  border-radius: var(--rounded-border-radius);
   object-fit: cover;
   object-position: center;
 }

@@ -75,12 +75,11 @@ const emitRandomCard = (): void => {
 
 .random-button {
   padding: 12px 24px;
-  font-size: 18px;
-  background-color: #c799d9;
-  color: #394e64;
+  font-size: var(--small-font-size);
+  background-color: var(--color-purple-1);
+  color: var(--color-grey-1);
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  border-radius: var(--medium-border-radius);
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;
@@ -89,14 +88,14 @@ const emitRandomCard = (): void => {
 }
 
 .random-button:hover {
-  background-color: #6f4181;
+  background-color: var(--color-purple-2);
   color: white;
   transform: scale(1.1);
 }
 
 @media (min-width: 1024px) {
   .random-button {
-    font-size: 16px;
+    font-size: var(--xs-font-size);
     padding: 10px 20px;
   }
 }

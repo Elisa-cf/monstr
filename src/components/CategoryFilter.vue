@@ -1,31 +1,82 @@
 <template>
   <div class="filter-container">
     <label for="category-select" class="filter-label">Select Category</label>
-
-    <i class="pi pi-list filter-icon"></i>
-    <select id="category-select" v-model="selectedCategory" @change="onCategoryChange">
-      <option value="">All The Monsterverse</option>
-      <option v-for="category in categories" :key="category.id" :value="category.id">
-        {{ category.title }}
-      </option>
-    </select>
+    <div class="custom-select" @click="toggleDropdown">
+      <div class="selected-option">
+        <i class="pi pi-list filter-icon"></i>
+        <p>{{ selectedCategoryTitle }}</p>
+        <i class="pi pi-chevron-down chevron-icon"></i>
+      </div>
+      <!-- Close the dropdown when clicking outside -->
+      <ul v-if="isDropdownOpen" class="options-list">
+        <li
+          :class="{ selected: '' === selectedCategory }"
+          @click="
+            () => {
+              selectCategory('', 'All The Monsterverse')
+              toggleDropdown()
+            }
+          "
+        >
+          All The Monsterverse
+        </li>
+        <li
+          v-for="category in categories"
+          :key="category.id"
+          :class="{ selected: category.id === selectedCategory }"
+          @click="
+            () => {
+              selectCategory(category.id, category.title)
+              toggleDropdown()
+            }
+          "
+        >
+          {{ category.title }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineEmits, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useCards } from '@/composables/useCards'
 
 const emit = defineEmits(['filter'])
 const selectedCategory = ref('')
+const selectedCategoryTitle = ref('All The Monsterverse')
+const isDropdownOpen = ref(false)
 
 const { categories, loadCategories } = useCards()
 
 /**
- * Emits an event to filter the cards based on the selected category.
+ * Toggles the dropdown open and closed.
  */
+const toggleDropdown = (): void => {
+  isDropdownOpen.value = !isDropdownOpen.value
+}
+
+/**
+ * Closes the dropdown.
+ */
+const closeDropdown = (): void => {
+  isDropdownOpen.value = false
+}
+
 const onCategoryChange = (): void => {
   emit('filter', selectedCategory.value)
+}
+
+/**
+ * Selects a category and emits the filter event.
+ * @param {string} categoryId - The ID of the selected category.
+ * @param {string} categoryTitle - The title of the selected category.
+ */
+const selectCategory = (categoryId: string, categoryTitle: string): void => {
+  selectedCategory.value = categoryId
+  selectedCategoryTitle.value = categoryTitle
+  closeDropdown()
+  onCategoryChange()
 }
 
 /**
@@ -36,48 +87,4 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped>
-.filter-container {
-  position: relative;
-  width: 100%;
-}
-
-.filter-label {
-  display: block;
-  margin-bottom: 4px;
-  font-weight: bold;
-  color: #394e64;
-}
-
-.filter-icon {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-35%);
-  color: #394e64;
-}
-
-select {
-  width: 100%;
-  padding: 8px 8px 8px 26px;
-  margin-bottom: 16px;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  color: #394e64;
-  transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-select:focus {
-  border-color: #c8dde6;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(57, 78, 100, 0.5);
-}
-
-@media (min-width: 1024px) {
-  .filter-label {
-    color: #ffffff;
-  }
-}
-</style>
+<style scoped></style>

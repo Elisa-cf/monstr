@@ -20,7 +20,7 @@ import { RouterLink } from 'vue-router'
   top: 0;
   z-index: 1000;
   height: 50px;
-  background-color: #1b1b1b;
+  background-color: var(--background-color);
   display: flex;
   width: 100%;
   align-items: center;
@@ -32,8 +32,8 @@ import { RouterLink } from 'vue-router'
   padding: 0.5rem;
   border-radius: 0.375rem;
   text-align: center;
-  color: #90f032;
-  font-size: 40px;
+  color: var(--color-secondary);
+  font-size: var(--xxl-font-size);
   font-weight: bold;
   text-shadow: black 3px 3px 1px;
 }

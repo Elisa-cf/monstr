@@ -1,6 +1,8 @@
 <template>
-  <section class="card-list-wrapper">
-    <h1 class="title">{{ title }}</h1>
+  <section class="card-list-wrapper" aria-label="Monster list">
+    <header>
+      <h1 class="card-list-title">{{ title }}</h1>
+    </header>
     <ul class="card-list">
       <EmptyFavoriteMessage v-if="cards.length === 0" :message="message" />
       <CardListItem
@@ -27,19 +29,29 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['toggleFavorite'])
 
-const isFavorited = (card: Card) => {
-  return props.favoriteCards.some((favCard) => favCard.id === card.id)
-}
-const toggleFavorite = (card: Card) => {
+/**
+ * Checks if the given card is favorited.
+ * @param {Card} card - The card to check.
+ * @returns {boolean} True if the card is favorited, false otherwise.
+ */
+const isFavorited = (card: Card): boolean =>
+  props.favoriteCards.some((favCard) => favCard.id === card.id)
+
+/**
+ * Emits an event to toggle the favorite status of the given card.
+ * @param {Card} card - The card to toggle favorite status for.
+ */
+const toggleFavorite = (card: Card): void => {
   emit('toggleFavorite', card)
 }
 
-const message = computed(() => {
-  if (props.cardType === 'favorite') {
-    return 'No monstrous crushes yet!'
-  }
-  return 'No top terrors yet!'
-})
+/**
+ * Computes the message to display when there are no cards.
+ * @returns {string} The message to display.
+ */
+const message = computed((): string =>
+  props.cardType === 'favorite' ? 'No monstrous crushes yet!' : 'No top terrors yet!',
+)
 </script>
 
 <style scoped>
@@ -47,7 +59,7 @@ const message = computed(() => {
   padding-bottom: 40px;
 }
 
-.title {
+.card-list-title {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #c4ffab;

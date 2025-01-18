@@ -40,6 +40,7 @@ import RandomCardModal from '../components/RandomCardModal.vue'
 import type { Card } from '@/types/interfaces'
 import LoadingSpinner from '@/utils/LoadingSpinner.vue'
 import { useCards } from '@/composables/useCards'
+import { loadFromLocalStorage, saveToLocalStorage } from '@/utils/StorageUtils'
 
 const searchQuery = ref('')
 const selectedCategory = ref('')
@@ -51,17 +52,40 @@ const isLoading = ref(true)
 
 const { cards, loadCards, loadCategories } = useCards()
 
+/**
+ * Updates the filter parameters and scrolls to the top of the window.
+ * @param {FilterParams} param0 - The filter parameters.
+ */
 const updateFilters = ({
   searchQuery: query,
   selectedCategory: category,
   selectedSortBy: sortBy,
-}: FilterParams) => {
+}: FilterParams): void => {
   searchQuery.value = query
   selectedCategory.value = category
   selectedSortBy.value = sortBy
   window.scrollTo(0, 0)
 }
 
+/**
+ * Sorts the given array of cards based on the specified sort order.
+ * @param {Card[]} cards - The array of cards to sort.
+ * @param {string} sortBy - The sort order ('ascendent' or 'descendent').
+ * @returns {Card[]} The sorted array of cards.
+ */
+const sortCards = (cards: Card[], sortBy: string): Card[] => {
+  if (sortBy === 'ascendent') {
+    return cards.sort((a, b) => a.name.localeCompare(b.name))
+  } else if (sortBy === 'descendent') {
+    return cards.sort((a, b) => b.name.localeCompare(a.name))
+  }
+  return cards
+}
+
+/**
+ * Computes the filtered and sorted array of cards based on the current filter parameters.
+ * @returns {Card[]} The filtered and sorted array of cards.
+ */
 const filteredCards = computed(() => {
   // Filter the cards first
   const filtered = cards.value.filter((card) => {
@@ -71,41 +95,38 @@ const filteredCards = computed(() => {
   })
 
   // Sort the filtered cards
-  if (selectedSortBy.value === 'ascendent') {
-    return filtered.sort((a, b) => a.name.localeCompare(b.name))
-  } else if (selectedSortBy.value === 'descendent') {
-    return filtered.sort((a, b) => b.name.localeCompare(a.name))
-  }
-
-  return filtered
+  return sortCards(filtered, selectedSortBy.value)
 })
 
-const openRandomCardModal = () => {
+/**
+ * Opens the random card modal with a randomly selected card.
+ */
+const openRandomCardModal = (): void => {
+  if (cards.value.length === 0) return
   const randomIndex = Math.floor(Math.random() * cards.value.length)
   randomCard.value = cards.value[randomIndex]
   isRandomCardModalOpen.value = true
 }
 
-const toggleFavorite = (card: Card) => {
-  const index = favoriteCards.value.findIndex((favCard) => favCard.id === card.id)
-  if (index === -1) {
+/**
+ * Toggles the favorite status of the given card.
+ * @param {Card} card - The card to toggle favorite status for.
+ */
+const toggleFavorite = (card: Card): void => {
+  const cardIndex = favoriteCards.value.findIndex((favCard) => favCard.id === card.id)
+  if (cardIndex === -1) {
     favoriteCards.value.push(card)
   } else {
-    favoriteCards.value.splice(index, 1)
+    favoriteCards.value.splice(cardIndex, 1)
   }
 }
 
-const loadFavoriteCards = () => {
-  const savedFavorites = localStorage.getItem('favoriteCards')
-  favoriteCards.value = savedFavorites ? JSON.parse(savedFavorites) : []
-}
+/**
+ * Loads the initial data, including favorite cards from local storage and card data from the API.
+ */
+const loadInitialData = async (): Promise<void> => {
+  favoriteCards.value = loadFromLocalStorage<Card[]>('favoriteCards', [])
 
-const saveFavoriteCards = () => {
-  localStorage.setItem('favoriteCards', JSON.stringify(favoriteCards.value))
-}
-
-onMounted(async () => {
-  loadFavoriteCards()
   try {
     await loadCards()
     await loadCategories()
@@ -114,9 +135,16 @@ onMounted(async () => {
   } finally {
     isLoading.value = false
   }
-})
+}
 
-watch(favoriteCards, saveFavoriteCards, { deep: true })
+onMounted(loadInitialData)
+
+/**
+ * Watches the favoriteCards array and saves it to local storage whenever it changes.
+ */
+watch(favoriteCards, () => saveToLocalStorage<Card[]>('favoriteCards', favoriteCards.value), {
+  deep: true,
+})
 </script>
 
 <style scoped></style>

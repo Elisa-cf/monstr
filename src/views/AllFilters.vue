@@ -1,15 +1,15 @@
 <template>
-  <div class="hero">
-    <div class="wrapper">
+  <section class="hero-image">
+    <div class="all-filters-wrapper">
       <SearchBar @search="handleSearch" />
       <div class="container-category-sort">
         <CategoryFilter :categories="categories" @filter="handleFilter" />
         <SortByFilter @sort="handleSort" />
       </div>
 
-      <ShuffleButton @click="emitRandomCard" class="button-container" />
+      <ShuffleButton @click="emitRandomCard" class="shuffle-button-container" />
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -27,41 +27,55 @@ const selectedSortBy = ref('')
 
 const { categories } = useCards()
 
+/**
+ * Emits an event to pick a random card.
+ */
 const emitRandomCard = () => {
   emit('pickRandomCard')
 }
 
-const handleSearch = (query: string) => {
+/**
+ * Emits an event to update the filter parameters.
+ */
+const emitUpdateFilters = (): void => {
+  emit('updateFilters', {
+    searchQuery: searchQuery.value,
+    selectedCategory: selectedCategory.value,
+    selectedSortBy: selectedSortBy.value,
+  })
+}
+
+/**
+ * Handles the search query update.
+ * @param {string} query - The search query.
+ */
+const handleSearch = (query: string): void => {
   searchQuery.value = query
-  emit('updateFilters', {
-    searchQuery: searchQuery.value,
-    selectedCategory: selectedCategory.value,
-    selectedSortBy: selectedSortBy.value,
-  })
+  emitUpdateFilters()
 }
 
-const handleFilter = (category: string) => {
+/**
+ * Handles the category filter update.
+ * @param {string} category - The selected category.
+ */
+const handleFilter = (category: string): void => {
   selectedCategory.value = category
-  emit('updateFilters', {
-    searchQuery: searchQuery.value,
-    selectedCategory: selectedCategory.value,
-    selectedSortBy: selectedSortBy.value,
-  })
+  emitUpdateFilters()
 }
 
-const handleSort = (sortedBy: string) => {
+/**
+ * Handles the sort order update.
+ * @param {string} sortedBy - The selected sort order.
+ */
+const handleSort = (sortedBy: string): void => {
   selectedSortBy.value = sortedBy
-  emit('updateFilters', {
-    searchQuery: searchQuery.value,
-    selectedCategory: selectedCategory.value,
-    selectedSortBy: selectedSortBy.value,
-  })
+  emitUpdateFilters()
 }
 </script>
 
 <style scoped>
 @import '@/assets/animations.css';
-.hero {
+.hero-image {
   position: sticky;
   margin-bottom: 60px;
   top: 50px;
@@ -71,7 +85,7 @@ const handleSort = (sortedBy: string) => {
   background-color: #aee68c;
 }
 
-.wrapper {
+.all-filters-wrapper {
   padding: 14px;
   display: flex;
   flex-direction: column;
@@ -86,10 +100,10 @@ const handleSort = (sortedBy: string) => {
 }
 
 @media (min-width: 1024px) {
-  .hero {
+  .hero-image {
     background-color: transparent;
   }
-  .wrapper {
+  .all-filters-wrapper {
     background-color: rgba(0, 0, 0, 0.67);
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -100,7 +114,7 @@ const handleSort = (sortedBy: string) => {
     gap: 10px;
   }
 
-  .button-container {
+  .shuffle-button-container {
     position: absolute;
     right: 10px;
     top: -45px;

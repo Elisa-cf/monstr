@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import CardListMonsters from '../views/CardListMonsters.vue'
 import AllFilters from '../views/AllFilters.vue'
 import type { FilterParams } from '@/types/interfaces'
@@ -95,7 +95,17 @@ const toggleFavorite = (card: Card) => {
   }
 }
 
+const loadFavoriteCards = () => {
+  const savedFavorites = localStorage.getItem('favoriteCards')
+  favoriteCards.value = savedFavorites ? JSON.parse(savedFavorites) : []
+}
+
+const saveFavoriteCards = () => {
+  localStorage.setItem('favoriteCards', JSON.stringify(favoriteCards.value))
+}
+
 onMounted(async () => {
+  loadFavoriteCards()
   try {
     await loadCards()
     await loadCategories()
@@ -105,6 +115,8 @@ onMounted(async () => {
     isLoading.value = false
   }
 })
+
+watch(favoriteCards, saveFavoriteCards, { deep: true })
 </script>
 
 <style scoped></style>

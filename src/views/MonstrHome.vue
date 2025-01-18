@@ -6,6 +6,7 @@
     </div>
     <div v-else>
       <div class="app">
+        <img class="monstr-logo" src="../assets/images/monstr_logo.png" alt="Monstr Logo" />
         <CardListMonsters
           :cards="favoriteCards"
           title="darkest crushes"
@@ -147,4 +148,16 @@ watch(favoriteCards, () => saveToLocalStorage<Card[]>('favoriteCards', favoriteC
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.monstr-logo {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .monstr-logo {
+    display: block;
+    margin: 10px auto;
+    max-height: 360px;
+  }
+}
+</style>

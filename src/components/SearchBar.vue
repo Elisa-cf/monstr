@@ -4,6 +4,7 @@
     <i class="pi pi-search filter-icon"></i>
     <input
       id="search-input"
+      class="search-input"
       type="text"
       v-model="searchQuery"
       placeholder="Find your boo-tiful match..."
@@ -18,12 +19,20 @@ import { defineEmits, ref } from 'vue'
 const emit = defineEmits(['search'])
 const searchQuery = ref('')
 
+/**
+ * Emits the search event with the current search query.
+ */
 const onSearch = () => {
   emit('search', searchQuery.value)
 }
 </script>
 
 <style scoped>
+.filter-container {
+  position: relative;
+  width: 100%;
+}
+
 .filter-label {
   display: block;
   margin-bottom: 4px;
@@ -31,12 +40,15 @@ const onSearch = () => {
   color: #394e64;
 }
 
-.filter-container {
-  position: relative;
-  width: 100%;
+.filter-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-35%);
+  color: #394e64;
 }
 
-input {
+.search-input {
   width: 100%;
   padding: 8px 8px 8px 32px;
   margin-bottom: 16px;
@@ -48,22 +60,14 @@ input {
     box-shadow 0.3s ease;
 }
 
-input::placeholder {
+search-input::placeholder {
   color: #394e64;
 }
 
-input:focus {
+search-input:focus {
   border-color: #c8dde6;
   outline: none;
   box-shadow: 0 0 0 2px rgba(57, 78, 100, 0.5);
-}
-
-.filter-icon {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-35%);
-  color: #394e64;
 }
 
 @media (min-width: 1024px) {

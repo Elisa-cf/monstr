@@ -3,7 +3,7 @@
     <label for="sort-by" class="filter-label">Sort By</label>
     <i v-if="sortedBy === 'ascendent'" class="pi pi-sort-amount-up filter-icon"></i>
     <i v-else class="pi pi-sort-amount-down filter-icon"></i>
-    <select v-model="sortedBy" @change="onSortByChange">
+    <select id="sort-by" v-model="sortedBy" @change="onSortByChange">
       <option value="ascendent">{{ optionText.ascendent }}</option>
       <option value="descendent">{{ optionText.descendent }}</option>
     </select>
@@ -21,22 +21,21 @@ const optionText = ref({
   descendent: 'Z-A (Creeps at the Top)',
 })
 
-const onSortByChange = () => {
+/**
+ * Emits the sort event with the current sort order.
+ */
+const onSortByChange = (): void => {
   emit('sort', sortedBy.value)
 }
 
-const updateOptionText = () => {
-  if (window.innerWidth < 768) {
-    optionText.value = {
-      ascendent: 'A-Z',
-      descendent: 'Z-A',
-    }
-  } else {
-    optionText.value = {
-      ascendent: 'A-Z (Ascending the Abyss)',
-      descendent: 'Z-A (Creeps at the Top)',
-    }
-  }
+/**
+ * Updates the option text based on the window width.
+ */
+const updateOptionText = (): void => {
+  optionText.value =
+    window.innerWidth < 768
+      ? { ascendent: 'A-Z', descendent: 'Z-A' }
+      : { ascendent: 'A-Z (Ascending the Abyss)', descendent: 'Z-A (Creeps at the Top)' }
 }
 
 onMounted(() => {
@@ -62,6 +61,14 @@ onBeforeUnmount(() => {
   color: #394e64;
 }
 
+.filter-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-35%);
+  color: #394e64;
+}
+
 select {
   width: 100%;
   padding: 8px 4px 8px 24px;
@@ -78,14 +85,6 @@ select:focus {
   border-color: #c8dde6;
   outline: none;
   box-shadow: 0 0 0 2px rgba(57, 78, 100, 0.5);
-}
-
-.filter-icon {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-35%);
-  color: #394e64;
 }
 
 @media (min-width: 1024px) {

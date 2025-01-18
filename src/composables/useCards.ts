@@ -30,7 +30,6 @@ export function useCards() {
   const loadCategories = async (): Promise<void> => {
     try {
       const fetchedCategories = await fetchCategories()
-      console.log('Fetched Categories:', fetchedCategories)
       categories.value = fetchedCategories
     } catch (error) {
       console.error('Error fetching categories:', error)

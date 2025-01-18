@@ -18,32 +18,49 @@ import { ref } from 'vue'
 const emit = defineEmits(['updateFilters', 'pickRandomCard'])
 const isTrembling = ref(false)
 const buttonText = ref('Unleash Your Monster Mate!')
+const trembleTimeout = ref<ReturnType<typeof setTimeout> | null>(null)
 
-let trembleTimeout: ReturnType<typeof setTimeout>
-
-const startTremble = () => {
+/**
+ * Starts the trembling animation.
+ */
+const startTremble = (): void => {
   isTrembling.value = true
-  trembleTimeout = setTimeout(() => {
+  trembleTimeout.value = setTimeout(() => {
     isTrembling.value = false
   }, 1000)
 }
 
-const stopTremble = () => {
-  clearTimeout(trembleTimeout)
+/**
+ * Stops the trembling animation.
+ */
+const stopTremble = (): void => {
+  if (trembleTimeout.value) {
+    clearTimeout(trembleTimeout.value)
+    trembleTimeout.value = null
+  }
   isTrembling.value = false
 }
 
-const handleMouseOver = () => {
+/**
+ * Handles the mouse over event.
+ */
+const handleMouseOver = (): void => {
   buttonText.value = 'Your Date’s Just a Click Away!'
   startTremble()
 }
 
-const handleMouseLeave = () => {
+/**
+ * Handles the mouse leave event.
+ */
+const handleMouseLeave = (): void => {
   buttonText.value = 'Unleash Your Monster Mate!'
   stopTremble()
 }
 
-const emitRandomCard = () => {
+/**
+ * Emits an event to pick a random card.
+ */
+const emitRandomCard = (): void => {
   emit('pickRandomCard')
 }
 </script>

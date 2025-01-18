@@ -1,11 +1,17 @@
 import axios from 'axios'
 
-// Create an instance of Axios with a base URL pointing to the API server
+/**
+ * Create an instance of Axios with a base URL pointing to the API server.
+ */
 const axiosInstance = axios.create({
   baseURL: '/api',
 })
 
-// Fetch the list of cards from the API
+/**
+ * Fetches the list of cards from the API.
+ * @returns {Promise<any>} A promise that resolves to the list of cards.
+ * @throws Will throw an error if the request fails.
+ */
 export async function fetchCards() {
   try {
     const response = await axiosInstance.get('/cards')
@@ -16,7 +22,11 @@ export async function fetchCards() {
   }
 }
 
-// Fetch the list of categories from the API
+/**
+ * Fetches the list of categories from the API.
+ * @returns {Promise<any>} A promise that resolves to the list of categories.
+ * @throws Will throw an error if the request fails.
+ */
 export async function fetchCategories() {
   try {
     const response = await axiosInstance.get('/categories')

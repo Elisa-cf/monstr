@@ -1,12 +1,12 @@
 <template>
   <div class="modal-overlay" @click.self="close">
     <div class="modal-content">
-      <button class="close-button" @click="close">
+      <button class="modal-close-button" @click="close">
         <i class="pi pi-times"></i>
       </button>
       <div v-if="card">
         <h2>{{ card.name }}</h2>
-        <img :src="getImageSrc(card.id)" :alt="card.name" />
+        <img :src="getImageSrc(card.id)" :alt="card.name" class="modal-image" />
       </div>
     </div>
 
@@ -24,6 +24,9 @@ import { getImageSrc } from '../utils/ImageUtils'
 defineProps<{ card: Card | null }>()
 const emit = defineEmits(['close'])
 
+/**
+ * Emits an event to close the modal.
+ */
 const close = () => {
   emit('close')
 }
@@ -64,16 +67,8 @@ const close = () => {
   align-items: center;
 }
 
-/* Rounded Image */
-.modal-content img {
-  width: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center;
-}
-
 /* x Modal Button */
-.close-button {
+.modal-close-button {
   position: absolute;
   top: 30px;
   right: 8px;
@@ -88,5 +83,13 @@ const close = () => {
   font-size: 30px;
   color: #394e64;
   display: block;
+}
+
+/* Rounded Image */
+.modal-image {
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 </style>

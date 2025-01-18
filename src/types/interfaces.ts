@@ -1,3 +1,8 @@
+/**
+ * This file contains TypeScript interfaces used throughout the application.
+ * These interfaces define the structure of various objects such as cards, categories, and filter parameters.
+ */
+
 export interface Card {
   id: string
   name: string

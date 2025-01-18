@@ -3,12 +3,7 @@
     <label for="category-select" class="filter-label">Select Category</label>
 
     <i class="pi pi-list filter-icon"></i>
-    <select
-      id="category-select"
-      v-model="selectedCategory"
-      @change="onCategoryChange"
-      class="custom-select"
-    >
+    <select id="category-select" v-model="selectedCategory" @change="onCategoryChange">
       <option value="">All The Monsterverse</option>
       <option v-for="category in categories" :key="category.id" :value="category.id">
         {{ category.title }}
@@ -26,10 +21,16 @@ const selectedCategory = ref('')
 
 const { categories, loadCategories } = useCards()
 
-const onCategoryChange = () => {
+/**
+ * Emits an event to filter the cards based on the selected category.
+ */
+const onCategoryChange = (): void => {
   emit('filter', selectedCategory.value)
 }
 
+/**
+ * Loads the categories when the component is mounted.
+ */
 onMounted(async () => {
   await loadCategories()
 })
@@ -45,6 +46,14 @@ onMounted(async () => {
   display: block;
   margin-bottom: 4px;
   font-weight: bold;
+  color: #394e64;
+}
+
+.filter-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-35%);
   color: #394e64;
 }
 
@@ -64,14 +73,6 @@ select:focus {
   border-color: #c8dde6;
   outline: none;
   box-shadow: 0 0 0 2px rgba(57, 78, 100, 0.5);
-}
-
-.filter-icon {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-35%);
-  color: #394e64;
 }
 
 @media (min-width: 1024px) {

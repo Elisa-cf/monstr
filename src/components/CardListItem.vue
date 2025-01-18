@@ -15,18 +15,17 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import type { Card } from '../types/interfaces'
+import { getImageSrc } from '../utils/ImageUtils'
 
 const props = defineProps<{ card: Card; isFavorited: boolean }>()
 
 const emit = defineEmits(['toggleFavorite'])
 
-const toggleFavorite = () => {
+/**
+ * Emits an event to toggle the favorite status of the given card.
+ */
+const toggleFavorite = (): void => {
   emit('toggleFavorite', props.card)
-}
-
-const getImageSrc = (id: string) => {
-  // Use RoboHash to generate unique images based on the id
-  return `https://robohash.org/${id}.png?set=set2`
 }
 </script>
 
@@ -52,11 +51,6 @@ const getImageSrc = (id: string) => {
   border: 4px solid #90f032;
 }
 
-.card-item:hover .card-image-container {
-  background-color: #90f032;
-  border-radius: 30px;
-}
-
 .card-image-container {
   flex-shrink: 0;
   padding: 0 16px;
@@ -68,6 +62,16 @@ const getImageSrc = (id: string) => {
   display: flex;
   justify-content: center;
   position: relative;
+}
+
+.card-item:hover .card-image-container {
+  background-color: #90f032;
+  border-radius: 30px;
+}
+
+.card-image {
+  max-width: 100%;
+  height: auto;
 }
 
 .heart-icon {
@@ -89,11 +93,6 @@ const getImageSrc = (id: string) => {
   transform: scale(2);
   top: 0px;
   right: 0px;
-}
-
-.card-image {
-  max-width: 100%;
-  height: auto;
 }
 
 .card-name {

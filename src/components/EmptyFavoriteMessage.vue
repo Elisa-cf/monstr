@@ -1,5 +1,5 @@
 <template>
-  <div class="empty-favorites">
+  <div class="empty-favorites" role="status">
     <p>{{ message }}</p>
   </div>
 </template>
@@ -14,7 +14,6 @@ defineProps<{ message: string }>()
 .empty-favorites {
   color: #c799d9;
   font-size: 16px;
-
   white-space: nowrap;
 }
 </style>

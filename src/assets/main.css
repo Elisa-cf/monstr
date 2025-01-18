@@ -13,6 +13,7 @@ input,
 button {
   font-family: 'Open Sans', serif;
   font-size: 100%;
+  cursor: pointer;
 }
 
 a {

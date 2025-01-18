@@ -19,16 +19,13 @@
 import { defineProps, defineEmits } from 'vue'
 import type { Card } from '../types/interfaces'
 import FireworksAnimation from '../components/FireworksAnimation.vue'
+import { getImageSrc } from '../utils/ImageUtils'
 
 defineProps<{ card: Card | null }>()
 const emit = defineEmits(['close'])
 
 const close = () => {
   emit('close')
-}
-
-const getImageSrc = (id: string) => {
-  return `https://robohash.org/${id}.png?set=set2&size=200x200`
 }
 </script>
 

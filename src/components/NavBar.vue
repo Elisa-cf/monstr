@@ -27,10 +27,6 @@ import { RouterLink } from 'vue-router'
   box-shadow: black 0px 3px 3px;
 }
 
-.logo-container {
-  width: 6rem;
-}
-
 .logo {
   font-family: 'Plaster', serif;
   padding: 0.5rem;
@@ -40,26 +36,5 @@ import { RouterLink } from 'vue-router'
   font-size: 40px;
   font-weight: bold;
   text-shadow: black 3px 3px 1px;
-}
-
-@media (min-width: 768px) {
-  .logo-container {
-    width: 8rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .logo-container {
-    width: 10rem;
-  }
-}
-
-.nav-button {
-  padding: 0.5rem;
-  border-radius: 0.375rem;
-  text-align: center;
-  color: #3182ce;
-  font-size: 1.125rem;
-  font-weight: bold;
 }
 </style>

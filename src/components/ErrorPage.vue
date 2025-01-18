@@ -1,13 +1,13 @@
 <template>
-  <div class="error-page">
-    <h1>404</h1>
-    <h2>Oopsy! Nothing was found</h2>
-    <p>
+  <seciton class="error-page">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-message">Oopsy! Nothing was found</h2>
+    <p class="error-description">
       The page you are looking for might have been removed, had its name changed, or is temporarily
       unavailable.
     </p>
     <RouterLink to="/" class="home-link">Return to homepage</RouterLink>
-  </div>
+  </seciton>
 </template>
 
 <script setup lang="ts">
@@ -26,19 +26,19 @@ import { RouterLink } from 'vue-router'
   background-color: #1b1b1b;
 }
 
-.error-page h1 {
+.error-code {
   font-size: 100px;
   margin: 0;
   color: #8cef30;
 }
 
-.error-page h2 {
+.error-message {
   font-size: 24px;
   margin: 20px 0;
   color: #8cef30;
 }
 
-.error-page p {
+.error-description {
   font-size: 16px;
   color: #aee68c;
   margin-bottom: 30px;

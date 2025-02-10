@@ -1,5 +1,7 @@
 # MONSTR: 💚 A Tinder for Monsters 💚
 
+To visit the website: https://supply-food-platform.netlify.app/
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

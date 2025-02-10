@@ -1,6 +1,6 @@
 # MONSTR: 💚 A Tinder for Monsters 💚
 
-To visit the website: https://supply-food-platform.netlify.app/
+To visit the website: https://monstr.netlify.app/
 
 ## Recommended IDE Setup
 

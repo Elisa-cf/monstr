@@ -1,4 +1,4 @@
-# monstr: a tinder for monsters
+# MONSTR: 💚 A Tinder for Monsters 💚
 
 This template should help get you started developing with Vue 3 in Vite.
 
